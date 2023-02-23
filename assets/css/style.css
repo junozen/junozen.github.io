@@ -692,6 +692,18 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+.services-page #footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .services-page #footer {
+    position: static;
+  }
+}
+
 .services .icon-box {
   text-align: center;
   padding: 70px 20px 80px 20px;
@@ -1008,6 +1020,18 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
+.contact-page #footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contact-page #footer {
+    position: static;
+  }
+}
+
 .contact .info {
   width: 100%;
   background: #fff;
@@ -1052,6 +1076,10 @@ section {
   color: #ffffff;
   font-size: 14px;
   text-align: center;
+}
+
+#footer.show {
+  display: block;
 }
 
 #footer .credits {
