@@ -34,12 +34,13 @@ h6 {
 
 #main {
   margin-top: 50px;
-  background-color: #1a5eb8;
+  background-color: #221b36;
+  min-height: calc(100vh - 125px);
 }
 
 @media (max-width: 992px) {
   #main {
-    margin-top: 30px;
+    margin-top: 50px;
   }
 }
 
@@ -457,6 +458,7 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
+  color: #ffffff;
 }
 
 .section-title h2::after {
@@ -970,10 +972,6 @@ section {
 # Contact
 --------------------------------------------------------------*/
 
-#contact {
-  margin-bottom: 0;
-}
-
 .contact-page #footer {
   position: fixed;
   bottom: 0;
@@ -1044,12 +1042,11 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #212531fa;
-  padding: 20px 0;
+  background: #1c1f29fa;
+  padding: 15px 0;
   color: #ffffff;
   font-size: 14px;
   text-align: center;
-  z-index: -1;
 }
 
 #footer.show {
@@ -1062,5 +1059,5 @@ section {
 }
 
 #footer .credits a {
-  color: #277ecf;
+  color: #3094f1;
 }
