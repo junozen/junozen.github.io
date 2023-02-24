@@ -10,7 +10,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  color: #ffffff;
 }
 
 a {
@@ -465,15 +465,20 @@ section {
   content: "";
   position: absolute;
   display: block;
-  width: 50px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   background: #5855f7;
   bottom: 0;
-  left: calc(50% - 25px);
+  left: calc(50% - 40px);
+  border-radius: 2px;
 }
 
 .section-title p {
   margin-bottom: 0;
+  margin-top: 50px;
+  font-size: 17px;
+  font-weight: 550;
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -482,7 +487,7 @@ section {
 .about .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: #555555;
+  color: #ffffff;
 }
 
 .about .content ul {
@@ -978,13 +983,6 @@ section {
   width: 100%;
 }
 
-.contact-p {
-  margin-top: 60px;
-  font-size: large;
-  font-weight: 550;
-  color:#ffffff;
-}
-
 .contact .info-box {
   color: #5c5858;
   padding: 25px;
@@ -1035,6 +1033,7 @@ section {
 
 .contact .info-box .social-links a:hover i {
   color: #0a65db;
+  transition: 0.3s;
 }
 
 
