@@ -846,6 +846,12 @@ section {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .contact-page #footer {
+    position: static;
+  }
+}
+
 .contact .info-box {
   color: #5c5858;
   padding: 25px;

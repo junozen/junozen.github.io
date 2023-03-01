@@ -350,3 +350,18 @@ arrows.forEach((arrow, index) => {
     arrow.classList.remove('bi-caret-up-fill');
   });
 });
+
+  // Detect mobile devices
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  // Add click event listener to the link
+  var externalLink = document.getElementById('external-link');
+  externalLink.addEventListener('click', function(e) {
+    // If the device is mobile, display a warning message
+    if (isMobile) {
+      e.preventDefault(); // prevent the link from opening immediately
+      if (confirm('This link will take you to an external site. Are you sure you want to proceed?')) {
+        window.open(this.href, '_blank'); // open the link in a new tab if the user confirms
+      }
+    }
+  });
