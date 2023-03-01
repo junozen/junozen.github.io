@@ -350,3 +350,15 @@ arrows.forEach((arrow, index) => {
     arrow.classList.remove('bi-caret-up-fill');
   });
 });
+
+  // Add click event listener to mobile link
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+   var links = document.querySelectorAll("#external-link");
+   for (var i = 0; i < links.length; i++) {
+     links[i].addEventListener("click", function(event) {
+      if (!confirm("You are leaving our site and being redirected to an external site. Do you want to continue?")) {
+        event.preventDefault();
+       }
+    });
+   }
+  }
