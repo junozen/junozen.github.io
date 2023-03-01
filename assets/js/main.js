@@ -327,3 +327,26 @@ if (allElements.length > 0) {
     }
   });
 }
+
+// Service Icon
+const arrows = document.querySelectorAll('.overlay i');
+const collapses = document.querySelectorAll('.collapse');
+
+arrows.forEach((arrow, index) => {
+  const collapse = collapses[index];
+  
+  arrow.addEventListener('click', function() {
+    arrow.classList.toggle('bi-caret-down-fill');
+    arrow.classList.toggle('bi-caret-up-fill');
+  });
+
+  collapse.addEventListener('shown.bs.collapse', function () {
+    arrow.classList.add('bi-caret-up-fill');
+    arrow.classList.remove('bi-caret-down-fill');
+  });
+
+  collapse.addEventListener('hidden.bs.collapse', function () {
+    arrow.classList.add('bi-caret-down-fill');
+    arrow.classList.remove('bi-caret-up-fill');
+  });
+});
