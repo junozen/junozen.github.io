@@ -1,9 +1,3 @@
-/**
-* Template Name: Kelly - v4.10.0
-* Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 (function() {
   "use strict";
 
@@ -108,7 +102,7 @@
   }, true)
 
   /**
-   * Scroll with ofset on page load with hash links in the url
+   * Scroll with offset on page load with hash links in the url
    */
   window.addEventListener('load', () => {
     if (window.location.hash) {
@@ -157,7 +151,7 @@
     }
 
   });
-
+  
   /**
    * Initiate portfolio lightbox 
    */
@@ -166,12 +160,12 @@
   });
 
   /**
-   * Initiate portfolio details lightbox 
-   */
+    Initiate portfolio details lightbox + added separate mobile sizing
+   **/
   const portfolioDetailsLightbox = GLightbox({
     selector: '.portfolio-details-lightbox',
-    width: '90%',
-    height: '90vh'
+    width: '80%',
+    height: '80vh'
   });
 
   /**
@@ -192,8 +186,8 @@
   });
 
   /**
-   * Skills animation
-   */
+    Skills animation
+  
   let skilsContent = select('.skills-content');
   if (skilsContent) {
     new Waypoint({
@@ -206,11 +200,11 @@
         });
       }
     })
-  }
+  } **/
 
   /**
-   * Testimonials slider
-   */
+    Testimonials slider
+   
   new Swiper('.testimonials-slider', {
     speed: 600,
     loop: true,
@@ -224,7 +218,7 @@
       type: 'bullets',
       clickable: true
     }
-  });
+  }); **/
 
   /**
    * Animation on scroll

@@ -805,54 +805,46 @@ section {
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
-.portfolio-details .info-button {
-  position: relative;
-  bottom: auto;
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #3a1c8d;
+.portfolio-details {
+  padding-top: 0px;
+  min-height: 100vh;
+  margin-top: -50px;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+  margin-top: 50px;
   border-color: #13041d;
   border-style: solid; 
   border-width: 1px;
   border-radius: 5px;
 }
 
-.portfolio-details .info-button:hover {
-  background-color: #6537e2;
-}
-
-.portfolio-details {
-  padding-top: 0;
-}
-
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-
 .portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
+  margin-top: 25px;
   position: relative;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #34b7a7;
+  border: 1px solid #28095c;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #34b7a7;
+  background-color: #5e5bff;
 }
 
 .portfolio-details .portfolio-info {
   padding: 30px;
-  box-shadow: 0px 0 30px rgba(34, 34, 34, 0.08);
+  margin-top: 20px;
+  box-shadow: 0px 0 30px rgba(34, 34, 34, 0.1);
 }
 
 .portfolio-details .portfolio-info h3 {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -869,8 +861,26 @@ section {
   margin-top: 10px;
 }
 
+.portfolio-details .info-button {
+  position: relative;
+  bottom: auto;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #3a1c8d;
+  border-color: #13041d;
+  border-style: solid; 
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.portfolio-details .info-button:hover {
+  background-color: #6537e2;
+}
+
 .portfolio-details .portfolio-description {
   padding-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .portfolio-details .portfolio-description h2 {
@@ -880,7 +890,7 @@ section {
 }
 
 .portfolio-details .portfolio-description p {
-  padding: 0;
+  text-align: justify;
 }
 
 /*--------------------------------------------------------------
