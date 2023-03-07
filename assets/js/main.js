@@ -1,113 +1,123 @@
-(function() {
+(function () {
   "use strict";
 
   /**
    * Easy selector helper function
    */
   const select = (el, all = false) => {
-    el = el.trim()
+    el = el.trim();
     if (all) {
-      return [...document.querySelectorAll(el)]
+      return [...document.querySelectorAll(el)];
     } else {
-      return document.querySelector(el)
+      return document.querySelector(el);
     }
-  }
+  };
 
   /**
    * Easy event listener function
    */
   const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
+    let selectEl = select(el, all);
     if (selectEl) {
       if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
+        selectEl.forEach((e) => e.addEventListener(type, listener));
       } else {
-        selectEl.addEventListener(type, listener)
+        selectEl.addEventListener(type, listener);
       }
     }
-  }
+  };
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
+    el.addEventListener("scroll", listener);
+  };
 
   /**
    * Scrolls to an element with header offset
    */
   const scrollto = (el) => {
-    let header = select('#header')
-    let offset = header.offsetHeight
+    let header = select("#header");
+    let offset = header.offsetHeight;
 
-    let elementPos = select(el).offsetTop
+    let elementPos = select(el).offsetTop;
     window.scrollTo({
       top: elementPos - offset,
-      behavior: 'smooth'
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
   /**
    * Back to top button
    */
-  let backtotop = select('.back-to-top')
+  let backtotop = select(".back-to-top");
   if (backtotop) {
     const toggleBacktotop = () => {
       if (window.scrollY > 100) {
-        backtotop.classList.add('active')
+        backtotop.classList.add("active");
       } else {
-        backtotop.classList.remove('active')
+        backtotop.classList.remove("active");
       }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    };
+    window.addEventListener("load", toggleBacktotop);
+    onscroll(document, toggleBacktotop);
   }
 
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
-    this.classList.toggle('bi-list')
-    this.classList.toggle('bi-x')
-  })
+  on("click", ".mobile-nav-toggle", function (e) {
+    select("#navbar").classList.toggle("navbar-mobile");
+    this.classList.toggle("bi-list");
+    this.classList.toggle("bi-x");
+  });
 
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
-    if (select('#navbar').classList.contains('navbar-mobile')) {
-      e.preventDefault()
-      this.nextElementSibling.classList.toggle('dropdown-active')
-    }
-  }, true)
+  on(
+    "click",
+    ".navbar .dropdown > a",
+    function (e) {
+      if (select("#navbar").classList.contains("navbar-mobile")) {
+        e.preventDefault();
+        this.nextElementSibling.classList.toggle("dropdown-active");
+      }
+    },
+    true
+  );
 
   /**
    * Scrool with ofset on links with a class name .scrollto
    */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
+  on(
+    "click",
+    ".scrollto",
+    function (e) {
+      if (select(this.hash)) {
+        e.preventDefault();
 
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
+        let navbar = select("#navbar");
+        if (navbar.classList.contains("navbar-mobile")) {
+          navbar.classList.remove("navbar-mobile");
+          let navbarToggle = select(".mobile-nav-toggle");
+          navbarToggle.classList.toggle("bi-list");
+          navbarToggle.classList.toggle("bi-x");
+        }
+        scrollto(this.hash);
       }
-      scrollto(this.hash)
-    }
-  }, true)
+    },
+    true
+  );
 
   /**
    * Scroll with offset on page load with hash links in the url
    */
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     if (window.location.hash) {
       if (select(window.location.hash)) {
-        scrollto(window.location.hash)
+        scrollto(window.location.hash);
       }
     }
   });
@@ -115,74 +125,78 @@
   /**
    * Preloader
    */
-  let preloader = select('#preloader');
+  let preloader = select("#preloader");
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove()
+    window.addEventListener("load", () => {
+      preloader.remove();
     });
   }
 
   /**
    * Porfolio isotope and filter
    */
-  window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
+  window.addEventListener("load", () => {
+    let portfolioContainer = select(".portfolio-container");
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+        itemSelector: ".portfolio-item",
       });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+      let portfolioFilters = select("#portfolio-flters li", true);
 
-      on('click', '#portfolio-flters li', function(e) {
-        e.preventDefault();
-        portfolioFilters.forEach(function(el) {
-          el.classList.remove('filter-active');
-        });
-        this.classList.add('filter-active');
+      on(
+        "click",
+        "#portfolio-flters li",
+        function (e) {
+          e.preventDefault();
+          portfolioFilters.forEach(function (el) {
+            el.classList.remove("filter-active");
+          });
+          this.classList.add("filter-active");
 
-        portfolioIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        portfolioIsotope.on('arrangeComplete', function() {
-          AOS.refresh()
-        });
-      }, true);
+          portfolioIsotope.arrange({
+            filter: this.getAttribute("data-filter"),
+          });
+          portfolioIsotope.on("arrangeComplete", function () {
+            AOS.refresh();
+          });
+        },
+        true
+      );
     }
-
   });
-  
+
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
+    selector: ".portfolio-lightbox",
   });
 
   /**
     Initiate portfolio details lightbox + added separate mobile sizing
    **/
   const portfolioDetailsLightbox = GLightbox({
-    selector: '.portfolio-details-lightbox',
-    width: '80%',
-    height: '80vh'
+    selector: ".portfolio-details-lightbox",
+    width: "80%",
+    height: "80vh",
   });
 
   /**
    * Portfolio details slider
    */
-  new Swiper('.portfolio-details-slider', {
+  new Swiper(".portfolio-details-slider", {
     speed: 400,
     loop: true,
     autoplay: {
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     },
     pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
   });
 
   /**
@@ -223,21 +237,20 @@
   /**
    * Animation on scroll
    */
-  window.addEventListener('load', () => {
+  window.addEventListener("load", () => {
     AOS.init({
       duration: 1000,
       easing: "ease-in-out",
       once: true,
-      mirror: false
+      mirror: false,
     });
   });
 
   /**
-   * Initiate Pure Counter 
+   * Initiate Pure Counter
    */
   new PureCounter();
-
-})()
+})();
 
 // Animated text
 const allElements = document.querySelectorAll(".animated-text");
@@ -323,36 +336,48 @@ if (allElements.length > 0) {
 }
 
 // Service Icon
-const arrows = document.querySelectorAll('.overlay i');
-const collapses = document.querySelectorAll('.collapse');
+const arrows = document.querySelectorAll(".overlay i");
+const collapses = document.querySelectorAll(".collapse");
 
 arrows.forEach((arrow, index) => {
   const collapse = collapses[index];
-  
-  arrow.addEventListener('click', function() {
-    arrow.classList.toggle('bi-caret-down-fill');
-    arrow.classList.toggle('bi-caret-up-fill');
+
+  arrow.addEventListener("click", function () {
+    arrow.classList.toggle("bi-caret-down-fill");
+    arrow.classList.toggle("bi-caret-up-fill");
   });
 
-  collapse.addEventListener('shown.bs.collapse', function () {
-    arrow.classList.add('bi-caret-up-fill');
-    arrow.classList.remove('bi-caret-down-fill');
+  collapse.addEventListener("shown.bs.collapse", function () {
+    arrow.classList.add("bi-caret-up-fill");
+    arrow.classList.remove("bi-caret-down-fill");
   });
 
-  collapse.addEventListener('hidden.bs.collapse', function () {
-    arrow.classList.add('bi-caret-down-fill');
-    arrow.classList.remove('bi-caret-up-fill');
+  collapse.addEventListener("hidden.bs.collapse", function () {
+    arrow.classList.add("bi-caret-down-fill");
+    arrow.classList.remove("bi-caret-up-fill");
   });
 });
 
-  // Add click event listener to mobile link
-  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    var links = document.getElementsByClassName("external-link");
-    for (var i = 0; i < links.length; i++) {
-      links[i].addEventListener('click', function(e) {
-        if (!confirm('This link will redirect you to an external website. Continue?')) {
+// Add click event listener to mobile link
+if (
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  )
+) {
+  var links = document.getElementsByClassName("external-link");
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener(
+      "click",
+      function (e) {
+        if (
+          !confirm(
+            "This link will redirect you to an external website. Continue?"
+          )
+        ) {
           e.preventDefault();
         }
-      }, false);
-    }
+      },
+      false
+    );
   }
+}
